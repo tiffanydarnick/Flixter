@@ -37,9 +37,9 @@ gem 'carrierwave'
 
 gem 'figaro', ">=1.0.0"
 
-gem "fog", "~> 1.3.1"
-
 gem 'mini_magick', '~>4.3.1'
+
+gem 'carrierwave-aws'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
