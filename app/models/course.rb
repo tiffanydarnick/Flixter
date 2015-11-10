@@ -14,4 +14,5 @@ class Course < ActiveRecord::Base
 
 	def premium?
 		! free?
+	end
 end

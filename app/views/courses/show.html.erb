@@ -21,13 +21,15 @@
     <% else %>
     <% if @course.free? %>
       <%= link_to 'Enroll', course_enrollments_path(@course), :class => 'btn btn-primary', :method => :post %>
-      <% else %>
+    <% else %>
       <%= form_tag course_enrollments_path(@course) do %>
         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                data-description="<%= @course.title %> (<%=number_to_currency @course.cost %>)"                
-                data-amount="<%= (@course.cost*100).to_i %>"></script>
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="<%= @course.title %> (<%=number_to_currency @course.cost %>)" 
+          data-amount="<%= (@course.cost*100).to_i %>">
+        </script>
       <% end %>
+    <% end %>
     <% end %>
   </div>
 
@@ -42,7 +44,7 @@
         <h3>
           <%= section.title %>
         </h3>
-        <% section.lessons.each do |lesson| %>
+        <% section.lessons.rank(:row_order).each do |lesson| %>
           <div class="col-xs-12 col-sm-6">
             <div class="lesson text-center">
               <br />
@@ -59,3 +61,4 @@
     <% end %>
   </div>
 </div>
+
